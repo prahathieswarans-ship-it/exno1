@@ -172,6 +172,8 @@ df
 
 <img width="947" height="534" alt="image" src="https://github.com/user-attachments/assets/7f245745-f4b3-486a-91b9-32bb7adbef60" />
 
+
+
 from scipy import stats
 import pandas as pd 
 import numpy as np
@@ -185,6 +187,29 @@ df_cleaned
 
 <img width="432" height="382" alt="image" src="https://github.com/user-attachments/assets/40e91ac3-e0c8-4c5a-b261-88c91b99f02f" />
 
+import pandas as pd 
+import numpy as np
+data_set = pd.read_csv("iris.csv")
+df = pd.DataFrame(data_set)
+Q1 = df["sepal_width"].quantile(0.25)
+Q3 = df["sepal_width"].quantile(0.75)
+
+IQR = Q3 - Q1
+
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+print("The Orginal DataSet")
+print(df)
+
+outliers = df[(df['sepal_width'] < lower_bound) | (df['sepal_width'] > upper_bound)]
+print("The Outliers")
+print(outliers)
+
+df_clean = df[(df['sepal_width'] >= lower_bound) & (df['sepal_width'] <= upper_bound)]
+print("The Dataset after removing the outliers")
+print(df_clean)
+
+<img width="593" height="672" alt="image" src="https://github.com/user-attachments/assets/6cd18071-3c37-44a4-a3ea-fd8be11b3be1" />
 
 
 # Result
