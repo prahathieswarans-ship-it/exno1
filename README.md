@@ -221,4 +221,5 @@ print(df_clean)
 
 
 # Result
-          
+
+Thus,we read the given data and perform data cleaning and save the cleaned data to a file.
