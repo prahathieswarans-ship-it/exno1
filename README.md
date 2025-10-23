@@ -127,9 +127,13 @@ dff
 
 
 import pandas as pd 
+
 data = pd.read_csv("Data_set.csv")
+
 df = pd.DataFrame(data)
+
 dff = df.ffill()
+
 dff
 
 
@@ -138,26 +142,37 @@ dff
 
 
 import pandas as pd 
+
 data = pd.read_csv("Data_set.csv")
+
 df = pd.DataFrame(data)
+
 dff = df.fillna(method='bfill')
+
 dff
 
 <img width="988" height="380" alt="image" src="https://github.com/user-attachments/assets/590681c9-a25a-4485-bfc9-395896f5c4b4" />
 
 
 import pandas as pd 
+
 data = pd.read_csv("Data_set.csv")
+
 df = pd.DataFrame(data)
+
 df["watchers"]= df["watchers"].fillna(df["watchers"].mean())
+
 df
 
 <img width="961" height="488" alt="image" src="https://github.com/user-attachments/assets/a884e0da-6b37-427a-9f93-566dd7f3164b" />
 
 
 import pandas as pd 
+
 data = pd.read_csv("Data_set.csv")
+
 df = pd.DataFrame(data)
+
 df.interpolate(method = "linear")
 
 
@@ -165,9 +180,13 @@ df.interpolate(method = "linear")
 
 
 import pandas as pd 
+
 data = pd.read_csv("Data_set.csv")
+
 df = pd.DataFrame(data)
+
 df.drop_duplicates()
+
 df
 
 <img width="947" height="534" alt="image" src="https://github.com/user-attachments/assets/7f245745-f4b3-486a-91b9-32bb7adbef60" />
@@ -175,14 +194,19 @@ df
 
 
 from scipy import stats
+
 import pandas as pd 
+
 import numpy as np
+
 data_set = pd.read_csv("iris.csv")
+
 df = pd.DataFrame(data_set)
 
 z_scores = np.abs(stats.zscore(df.select_dtypes(include=[np.number])))
 
 df_cleaned = df[(z_scores < 3).all(axis=1)]
+
 df_cleaned
 
 <img width="432" height="382" alt="image" src="https://github.com/user-attachments/assets/40e91ac3-e0c8-4c5a-b261-88c91b99f02f" />
@@ -196,24 +220,30 @@ data_set = pd.read_csv("iris.csv")
 df = pd.DataFrame(data_set)
 
 Q1 = df["sepal_width"].quantile(0.25)
+
 Q3 = df["sepal_width"].quantile(0.75)
 
 IQR = Q3 - Q1
 
 lower_bound = Q1 - 1.5 * IQR
+
 upper_bound = Q3 + 1.5 * IQR
 
 print("The Orginal DataSet")
+
 print(df)
+
 
 outliers = df[(df['sepal_width'] < lower_bound) | (df['sepal_width'] > upper_bound)]
 
 print("The Outliers")
+
 print(outliers)
 
 df_clean = df[(df['sepal_width'] >= lower_bound) & (df['sepal_width'] <= upper_bound)]
 
 print("The Dataset after removing the outliers")
+
 print(df_clean)
 
 
@@ -221,5 +251,6 @@ print(df_clean)
 
 
 # Result
+
 
 Thus,we read the given data and perform data cleaning and save the cleaned data to a file.
